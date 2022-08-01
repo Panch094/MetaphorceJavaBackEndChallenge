@@ -7,13 +7,14 @@
  */
 package com.methaphorce_challenge.repository;
 
+import java.util.ArrayList;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import com.methaphorce_challenge.beansDB.ContractTypeBeanDb;
 import com.methaphorce_challenge.beansDB.EmployeeBeanDb;
 
 @EnableJpaRepositories
@@ -21,7 +22,16 @@ import com.methaphorce_challenge.beansDB.EmployeeBeanDb;
 public interface EmployeeRepository 
 								extends JpaRepository<EmployeeBeanDb, Integer>{
 
-	@Query("SELECT u FROM employee u WHERE emp_employee_pk = ?1")
+	@Query(nativeQuery = true, 
+			value = "SELECT * FROM employee WHERE emp_employee_pk = ?1")
 	public EmployeeBeanDb getInfoEmployeeById(Integer contractId);
+	
+	@Query(nativeQuery = true, 
+			value = "SELECT * FROM employee WHERE emp_tax_id_number = ?1")
+	public EmployeeBeanDb getInfoByTaxIdNum(String taxIdNum);
+	
+	@Query(nativeQuery = true, 
+			value = "SELECT * FROM employee WHERE emp_is_active = 1")
+	public ArrayList<EmployeeBeanDb> getListOfActiveEmp();
 	
 }

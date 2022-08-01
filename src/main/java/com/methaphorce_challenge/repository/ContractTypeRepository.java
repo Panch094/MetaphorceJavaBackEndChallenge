@@ -21,7 +21,8 @@ import com.methaphorce_challenge.beansDB.ContractTypeBeanDb;
 public interface ContractTypeRepository 
 							extends JpaRepository<ContractTypeBeanDb, Short>{
 	
-	@Query("SELECT u FROM contracttype u WHERE contract_type_pk = ?1")
+	@Query(nativeQuery = true, 
+			value ="SELECT * FROM contracttype WHERE contract_type_pk = ?1")
 	public ContractTypeBeanDb getInfoContTypeById(Short contractId);
 	
 }
