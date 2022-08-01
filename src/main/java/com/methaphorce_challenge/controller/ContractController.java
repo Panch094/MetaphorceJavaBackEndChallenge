@@ -43,7 +43,7 @@ public class ContractController extends ContractToolsProcess{
 	 *	</p>
 	 *
 	 *	@RequestHeader authorizer
-	 *	@return new ResponseEntity<EmployeeActiveResponse>
+	 *	@return new ResponseEntity<ArrayList<EmployeeActiveResponse>>
 	 */
 	@GetMapping(
 			value = "active_employee", 
@@ -220,12 +220,11 @@ public class ContractController extends ContractToolsProcess{
 	/**
 	 *	<h1> Add new employee </h1>
 	 *	<p>
-	 *	
+	 *		In the service new employees are added through a JSON type form.
 	 *	</p>
 	 *
-	 *	@RequestParam employee_id
 	 *	@RequestHeader authorizer
-	 *	@RequestBody contractToAdd
+	 *	@RequestBody addToEmployee
 	 *	@return new ResponseEntity<AddNewContractResponse>
 	 */
 	@PostMapping(value = "add_employee", 
@@ -281,4 +280,11 @@ public class ContractController extends ContractToolsProcess{
 		);		
 	}
 	
+	/*
+	 * Sorry, I lacked time to finish the other endpoints, I hope you can 
+	 * understand, if I get the opportunity to finish them I will gladly 
+	 * finish them. Have a nice day :D. Yours faithfully. 
+	 * 
+	 * Atte. Francisco Javier Gutierrez Aldrete - Java Developer
+	 */
 }
